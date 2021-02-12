@@ -1,5 +1,5 @@
 Vue.component("inventory-data-grid", {
-    props: [],
+    props: ["reload"],
 
     template: `
     <div>
@@ -53,6 +53,13 @@ Vue.component("inventory-data-grid", {
             inventory: [],
             grid: {}
         };
+    },
+
+    watch: {
+        reload: function(val) {
+            console.log("Reload fired!");
+            this.getInventory();
+        }
     },
 
     mounted: function() {

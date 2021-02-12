@@ -31,11 +31,17 @@
       </div>
       <div class="row">
         <div class="col-sm">
-          <inventory-data-grid v-on:row-selected="onRowSelected"></inventory-data-grid>
+          <inventory-data-grid v-on:row-selected="onRowSelected" v-bind:reload="reload"></inventory-data-grid>
         </div>
       </div>
 
-      <edit-modal v-bind:show="showEditModal" v-on:close="closeEditModal"></edit-modal>
+      <edit-modal 
+        v-bind:show="showEditModal" 
+        v-bind:row="rowSelected"
+        v-bind:mode="editMode"
+        v-on:close="closeEditModal" 
+        v-on:save="saveItem"
+      ></edit-modal>
 
       <dialogue v-bind:show="showDialogue" v-bind:title="dialogueTitle" v-bind:msg="dialogueMessage" v-on:close="closeDialogue"></dialogue>
       
