@@ -18,8 +18,14 @@ Vue.component("inventory-data-grid", {
                         filter: "agTextColumnFilter",
                         sortable: true
                     },
-                    { headerName: "Units", field: "units" },
-                    { headerName: "Qty/Unit", field: "quantityPerUnit" },
+                    { 
+                        headerName: "Units", 
+                        field: "units" 
+                    },
+                    { 
+                        headerName: "Qty/Unit", 
+                        field: "quantityPerUnit" 
+                    },
                     { 
                         headerName: "Location", 
                         field: "location", 

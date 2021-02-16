@@ -18,6 +18,7 @@ Flight::route('/users', function(){
     Flight::render("users");
 });
 
+// Inventory Routes
 Flight::route("GET /api/inventory/items", "getInventoryItems");
 Flight::route("POST /api/inventory/add", function() {
     echo json_encode(addInventoryItem(json_decode(Flight::request()->getBody())));
@@ -28,6 +29,11 @@ Flight::route("POST /api/inventory/edit", function() {
 Flight::route("POST /api/inventory/delete", function() {
     echo json_encode(deleteInventoryItem(json_decode(Flight::request()->getBody())));
 });
+Flight::route("POST /api/inventory/increment", function() {
+    echo json_encode(incrementInventoryItem(json_decode(Flight::request()->getBody())));
+});
+
+// User Routes
 Flight::route("GET /api/users", "getUsers");
 
 Flight::start();

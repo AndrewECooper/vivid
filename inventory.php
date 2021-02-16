@@ -77,6 +77,31 @@ function editInventoryItem($data) {
     return $response;
 }
 
+function incrementInventoryItem($data) {
+    $dbhost = 'localhost';
+    $dbuser = 'seedtwos_vivid';
+    $dbpass = 'Hazel3599!';
+    $dbname = 'seedtwos_vivid';
+    $link = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname) or die('Error: unable to connect to mysql server' . mysqli_connect_error());
+
+    $sql = <<<QRY
+        update inventory set units = {$data->units}
+        where id = {$data->id}
+    QRY; 
+
+    $response = "";
+
+    if (mysqli_query($link, $sql)) {
+        $response = array("success"=>true);
+    } else {
+        $response = array("success"=>false, "error"=>mysqli_error($link));
+    }
+
+    mysqli_close($link);
+
+    return $response;
+}
+
 function deleteInventoryItem($data) {
     $dbhost = 'localhost';
     $dbuser = 'seedtwos_vivid';

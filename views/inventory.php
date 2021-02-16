@@ -19,13 +19,21 @@
         </div>
         <div class="col-sm" style="padding-right: 3%">
           <div class="float-right">
-            <button class="btn btn-sm btn-danger" v-on:click="deleteSelected">Delete Selected</button>
+            <button class="btn btn-danger" v-on:click="deleteSelected">Delete Selected</button>
           </div>
           <div class="float-right">
-            <button class="btn btn-sm btn-secondary" v-on:click="editSelected">Edit Selected</button>
+            <button class="btn btn-secondary" v-on:click="editSelected">Edit Selected</button>
           </div>
           <div class="float-right">
-            <button class="btn btn-sm btn-primary" v-on:click="addNew">Add New Item</button>
+            <button class="btn btn-primary" v-on:click="addNew">Add New Item</button>
+          </div>
+          <div class="float-right form-group" style="margin-right: 25px;">
+            <div class="input-group">
+              <input v-model.number="incrementValue" type="number" class="form-control" style="width: 75px;">
+              <div class="input-group-append">
+                <span class="btn btn-success" v-on:click="increment">+/-</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

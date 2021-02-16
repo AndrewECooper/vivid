@@ -22,7 +22,8 @@ var app = new Vue({
         dialogueTitle: "",
         dialogueMessage: "",
         reload: 1,
-        editMode: "add"
+        editMode: "add",
+        incrementValue: 0
     },
 
     methods: {
@@ -37,6 +38,7 @@ var app = new Vue({
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                this.rowSelected = {};
                 this.reload++;
             });
         },
@@ -68,6 +70,15 @@ var app = new Vue({
             console.log("Adding!");
             this.editMode = 'add';
             this.showEditModal = true;
+        },
+
+        increment: function() {
+            if (typeof this.rowSelected.id === "undefined") {
+                this.openDialogue("Warning!", "You must select a row to increment/decrement.");
+                return;
+            };
+            let newValue = parseInt(this.rowSelected.units) + parseInt(this.incrementValue);
+            this.post("/api/inventory/increment", { id: this.rowSelected.id, units: newValue });
         },
 
         closeEditModal: function() {
